@@ -26,3 +26,9 @@
 *.exe
 *.out
 *.app
+
+nbproject
+build
+*.zip
+Makefile
+
