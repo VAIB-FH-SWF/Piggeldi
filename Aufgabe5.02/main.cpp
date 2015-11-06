@@ -1,6 +1,6 @@
 /* 
- * File:   main.cpp
- * Author: fredde (powered hoelshare)
+ * File:   main.cpp (powered by hoelshare)
+ * Author: fredde 
  *
  * Created on 26. Oktober 2015, 16:48
  */
@@ -63,8 +63,6 @@ void feld_rechts_rotieren(char a[], unsigned int n, unsigned int shift) {
 
 int main() {
     const int feldGroesse = 26;
-    //char feld[] = { 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M',
-    //                'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z' }; // das Alphabet
 
     char feld[] = {'B', 'I', 'E', 'R', 'E', 'T', 'R', 'I', 'K', 'E', 'N', 'I', 'S',
                    'T', 'G', 'E', 'S', 'U', 'N', 'D', 'T', 'R', 'I', 'N', 'K', 'T'};
