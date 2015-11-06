@@ -13,7 +13,9 @@
 using namespace std;
 
 /**
- * Berechnet die Quersumme der Zahl
+ * Ermittelt die Quersumme aus einer Zahl
+ * @param zu pruefende Zahl
+ * @return quersumme der Zahl
  */
 int quersumme(int zahl)
 {

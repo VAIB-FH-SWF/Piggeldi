@@ -43,7 +43,11 @@ int main() {
     matrix_print(mat, nmat);
     return (0);
 }
-
+/**
+ * Gibt die Matrix in der CLI aus
+ * @param mat Matrixdaten
+ * @param n Groesse des Array
+ */
 void matrix_print(int mat[nmat][nmat], uint n) {
     for (uint zeile = 0; zeile < n; zeile++) {
         for (uint spalte = 0; spalte < n; spalte++) {
@@ -52,7 +56,11 @@ void matrix_print(int mat[nmat][nmat], uint n) {
         cout << endl;
     }
 }
-
+/**
+ * Erzeugt eine Leerematrix in dem alle werte mit 0 vorbelegt werden
+ * @param mat matrixarray
+ * @param n Groesse des Array
+ */
 void matrix_null(int mat[nmat][nmat], uint n) {
     for (uint zeile = 0; zeile < n; zeile++) {
         for (uint spalte = 0; spalte < n; spalte++) {
@@ -60,7 +68,13 @@ void matrix_null(int mat[nmat][nmat], uint n) {
         }
     }
 }
-
+/**
+ * Erzeugt ein Matrixframe 
+ * @param mat Matrixarray
+ * @param n Groesse des Array
+ * @param frame anzahl der Zeilen
+ * @param value Anzeigewert
+ */
 void matrix_frame(int mat[nmat][nmat], uint n, uint frame, int value) {
     if (frame > n / 2 + 1) {
         frame = n / 2 + 1;
@@ -75,12 +89,18 @@ void matrix_frame(int mat[nmat][nmat], uint n, uint frame, int value) {
         }
     }
 }
-
+/**
+ * Erzeugt eine Diagonalmatrix
+ * @param mat Matrixarray
+ * @param n Groesse des Array
+ * @param diag Diagonalbreite
+ * @param value Anzeigewert
+ */
 void matrix_diag(int mat[nmat][nmat], uint n, uint diag, int value) {
     if (diag > n / 2 - 1) {
         diag = n / 2 - 1;
     }
-
+    
     matrix_null(mat, n);
 
     for (uint zeile = 0; zeile < n; zeile++) {
@@ -104,7 +124,13 @@ void matrix_diag(int mat[nmat][nmat], uint n, uint diag, int value) {
         }
     }
 }
-
+/**
+ * Erzeugt eine Dreickmatrix
+ * @param mat Matrixarray
+ * @param n Groesse des Array
+ * @param k Groesse des Dreiecks
+ * @param value Anzeigewert
+ */
 void matrix_dreieck(int mat[nmat][nmat], uint n, uint k, int value) {
     if (k > n / 2 - 1) {
         k = n / 2 - 1;
