@@ -34,5 +34,7 @@ Makefile
 RemoteSystemTempFiles
 /Aufgabe4.03/dist/
 /Aufgabe4.01/dist/
-/dist/
+/dist/*
 /Aufgabe4.02/dist/
+.dep.inc
+dist/*
