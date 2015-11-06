@@ -1,5 +1,5 @@
 /* 
- * File:   main.cpp
+ * File:   main.cpp (powered by hoelshare)
  * Author: fredde
  *
  * Created on 6. November 2015, 09:47
@@ -23,12 +23,12 @@ int quersumme(int zahl)
         summe += zahl % 10;
         zahl /= 10;
     }
-    return (summe);
+    return summe;
 }
 
 /**
- * Berechnet die Pruefsumme der Zahl indem abwechselnd jede Ziffer mit *1/*2 gewichtet wird und 
- * daraus dann die Quersumme gebildet wird
+ * Berechnet die Pruefsumme der Zahl indem abwechselnd jede Ziffer entweder 
+ *  mit 1 oder 2 gewichtet wird und daraus dann die Quersumme gebildet wird
  * @param zu pruefende Zahl
  * @return die Pruefsumme
  */
@@ -38,7 +38,8 @@ int berechnePruefsumme (string zahl)
    for (unsigned int i = 0; i < zahl.length(); i++)
    {
        int zuGewichteneZahl = 0;
-       zuGewichteneZahl = zahl[i];
+       zuGewichteneZahl = zahl[zahl.length() - (i + 1)] - '0'; //Wir beginnen von hinten
+       
        if (i % 2 != 0)
        {
            zuGewichteneZahl*= 2;
@@ -50,6 +51,8 @@ int berechnePruefsumme (string zahl)
 
 /**
  * Prueft die Kreditkartenummer
+ * @param number zupruefende Nummber
+ * @return true on success / false others
  */
 bool luhn_check(string number)
 {
