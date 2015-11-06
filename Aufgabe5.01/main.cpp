@@ -23,7 +23,7 @@ bool isvalueinarray(char val, const char *arr, int size){
 }
 
 /*
- * 
+ * Haupteinstiegspunkts ins Programm
  */
 int main(int argc, char** argv) {
 
