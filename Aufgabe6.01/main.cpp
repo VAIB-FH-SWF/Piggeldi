@@ -104,24 +104,23 @@ void matrix_diag(int mat[nmat][nmat], uint n, uint diag, int value) {
     matrix_null(mat, n);
 
     for (uint zeile = 0; zeile < n; zeile++) {
-        for (uint spalte = 0; spalte < n; spalte++) {
-            if (zeile == spalte) {
-                int diagBreite = 0;
-                for (uint diagZaehler = 0; diagZaehler < diag; diagZaehler++) {
-                    //Bei 0 ist es die mittlere Diagonale
-                    if (diagZaehler == 0) {
-                        mat[zeile][spalte] = value;   
-                    }
-                    //Sobald eine ungerade Zahl von Diagonalen vorliegt,
-                    //wird die Diagonale um Faktor 1 breiter
-                    else if (diagZaehler % 2 != 0) {
-                        diagBreite ++;
-                        mat[zeile + diagBreite][spalte] = value;
-                        mat[zeile][spalte + diagBreite] = value;
-                    }
-                }
-            }
-        }
+        uint spalte = zeile; 
+		if (zeile == spalte) {
+			int diagBreite = 0;
+			for (uint diagZaehler = 0; diagZaehler < diag; diagZaehler++) {
+				//Bei 0 ist es die mittlere Diagonale
+				if (diagZaehler == 0) {
+					mat[zeile][spalte] = value;   
+				}
+				//Sobald eine ungerade Zahl von Diagonalen vorliegt,
+				//wird die Diagonale um Faktor 1 breiter
+				else if (diagZaehler % 2 != 0) {
+					diagBreite ++;
+					mat[zeile + diagBreite][spalte] = value;
+					mat[zeile][spalte + diagBreite] = value;
+				}
+			}
+		}
     }
 }
 /**
