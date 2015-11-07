@@ -41,24 +41,16 @@ void Rechner::listeAuswerten()
         double aktuelleZahl = liste[loopIterator];
         this->mittelWert += aktuelleZahl;
         
-        //startwert fur die kleinste Zahl festlegen
-        if (loopIterator == 0)
-        {
-            this->kleinsterWert = aktuelleZahl;
-        }
-        
         //Ermitteln der groessten Zahl
-        if (this->groessterWert < aktuelleZahl)
+        if (this->groessterWert < aktuelleZahl || loopIterator == 0)
         {
             this->groessterWert = aktuelleZahl;
         }
-        
         //Ermitteln der kleinsten Zahl
-        if (this->kleinsterWert > aktuelleZahl)
+        if (this->kleinsterWert > aktuelleZahl || loopIterator == 0)
         {
             this->kleinsterWert = aktuelleZahl;
         }
-     
     }
     this->mittelWert =  this->mittelWert/(double)liste.size();
 }

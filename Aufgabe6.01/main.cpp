@@ -43,6 +43,7 @@ int main() {
     matrix_print(mat, nmat);
     return (0);
 }
+
 /**
  * Gibt die Matrix in der CLI aus
  * @param mat Matrixdaten
@@ -56,6 +57,7 @@ void matrix_print(int mat[nmat][nmat], uint n) {
         cout << endl;
     }
 }
+
 /**
  * Erzeugt eine Leerematrix in dem alle werte mit 0 vorbelegt werden
  * @param mat matrixarray
@@ -68,6 +70,7 @@ void matrix_null(int mat[nmat][nmat], uint n) {
         }
     }
 }
+
 /**
  * Erzeugt ein Matrixframe 
  * @param mat Matrixarray
@@ -89,6 +92,7 @@ void matrix_frame(int mat[nmat][nmat], uint n, uint frame, int value) {
         }
     }
 }
+
 /**
  * Erzeugt eine Diagonalmatrix
  * @param mat Matrixarray
@@ -100,29 +104,29 @@ void matrix_diag(int mat[nmat][nmat], uint n, uint diag, int value) {
     if (diag > n / 2 - 1) {
         diag = n / 2 - 1;
     }
-    
+
     matrix_null(mat, n);
 
     for (uint zeile = 0; zeile < n; zeile++) {
-        uint spalte = zeile; 
-		if (zeile == spalte) {
-			int diagBreite = 0;
-			for (uint diagZaehler = 0; diagZaehler < diag; diagZaehler++) {
-				//Bei 0 ist es die mittlere Diagonale
-				if (diagZaehler == 0) {
-					mat[zeile][spalte] = value;   
-				}
-				//Sobald eine ungerade Zahl von Diagonalen vorliegt,
-				//wird die Diagonale um Faktor 1 breiter
-				else if (diagZaehler % 2 != 0) {
-					diagBreite ++;
-					mat[zeile + diagBreite][spalte] = value;
-					mat[zeile][spalte + diagBreite] = value;
-				}
-			}
-		}
+        
+        uint spalte = zeile;
+        
+        int diagBreite = 0;
+        for (uint diagZaehler = 0; diagZaehler < diag; diagZaehler++) {
+            //Bei 0 ist es die mittlere Diagonale
+            if (diagZaehler == 0) {
+                mat[zeile][spalte] = value;
+            }//Sobald eine ungerade Zahl von Diagonalen vorliegt,
+                //wird die Diagonale um Faktor 1 breiter
+            else if (diagZaehler % 2 != 0) {
+                diagBreite++;
+                mat[zeile + diagBreite][spalte] = value;
+                mat[zeile][spalte + diagBreite] = value;
+            }
+        }
     }
 }
+
 /**
  * Erzeugt eine Dreickmatrix
  * @param mat Matrixarray
