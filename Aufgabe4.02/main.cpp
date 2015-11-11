@@ -10,16 +10,24 @@
 
 using namespace std;
 
+
+/*
+ Enumeration welche die 3 Zustaende definiert
+ */
+enum ZUSTAND {
+    ZIFFER, LEER, BUCHSTABE
+};
+
 int main() {
     int maxstring = 256; // Puffergroesse
     char text[maxstring]; // Eingabepuffer
     char c; // Hilfsvariable
-    int textIterator, summeWoerter; // Schleifenzaehler,Buchstabezaehler
-    bool istSpace = true;
+    int textIterator = 0, summeWoerter = 0; // Schleifenzaehler,Buchstabezaehler
+    
+    ZUSTAND zustand = LEER;
 
     cout << "Geben Sie eine Textzeile ein: ";
-
-    textIterator = 0;
+    
     // jedes Zeichen einzeln einlesen
     while ((c = cin.get()) != '\n') {
         text[textIterator] = c;
@@ -28,19 +36,18 @@ int main() {
     text[textIterator] = '\0';
 
     cout << "Der eingegebene Text lautet: '" << text << "'\n";
-
-    summeWoerter = 0;
-    // Woerter und andere Zeichen werden als WORT
-    // nur SPACE, Tabs usw. werden als LEER gezaehlt
+    
+    
     for (textIterator = 0; text[textIterator] != '\0'; textIterator += 1) {
         if (isspace(text[textIterator])) {
-            istSpace = true;
-        } else {
-            if (istSpace) {
+            zustand = LEER;
+        //Sichergehen das wir nur Buchstaben zaehlen
+        } else if (isalpha(text[textIterator])) {
+            if (LEER == zustand) {
                 summeWoerter++;
             }
 
-            istSpace = false;
+            zustand = BUCHSTABE;
         }
     }
     cout << setw(6) << summeWoerter << " Woerter\n";
