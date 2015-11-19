@@ -22,7 +22,7 @@ int main ( )
    int maxstring = 256;                      // Puffergroesse
    char text[maxstring];                     // Eingabepuffer
    char c;                                   // Hilfsvariable
-   int textIterator, summeBuchstaben, summeZahlen = 0;       // textIterator,Buchstabezaehler
+   int textIterator = 0, summeBuchstaben = 0, summeZahlen = 0;       // textIterator,Buchstabezaehler
 
    cout << "Geben Sie eine Textzeile ein: ";
 

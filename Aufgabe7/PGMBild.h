@@ -55,6 +55,13 @@ public:
      * @return true=success/false=other
      */
     bool sharpening(std::string pictureName);
+    
+    /**
+     * Fuellt ein Bild mit einem neuem Pixelwert
+     * @param pictureName Name der Ausgabedatei
+     * @return 
+     */
+    PGMBild fill ( pixel oldVal, pixel newVal, int inz, int ins);
 
 private:
     static const int N = 1000; //maximale Bildgroesse
@@ -104,6 +111,8 @@ private:
      * @return liste von integerwerten der pixel
      */
     IntegerVector findePixelNachbarn(pixel pixelInformationen[N][N], int zeile, int spalte);
+    
+    
 
 };
 

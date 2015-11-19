@@ -338,5 +338,18 @@ IntegerVector PGMBild::findePixelNachbarn(pixel pixelInformationen[N][N], int ze
     return pixelNachbarn;
 }
 
+bool PGMBild::fill(std::string pictureName, pixel oldVal, pixel newVal, int inz, int ins) {
+    
+    
+    
+    if (this->pixelFelder[inz][ins] == oldVal) {
+        
+        this->pixelFelder[inz][ins] = newVal;
+    }
+    return 
+    
+}
+
+
 
 

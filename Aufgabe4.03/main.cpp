@@ -23,10 +23,10 @@ enum ZUSTAND {
 int main() {
 
     //Deklaration der Variablen und mit 0 vorbelegen
-    int summeZiffer, summeBuchstaben, summeWoerter, summeZahl = 0;
+    int summeZiffer = 0, summeBuchstaben = 0, summeWoerter = 0, summeZahl = 0;
 
     //Auszulesende Datei
-    string dateiname = "test.txt";
+    string dateiname = "text.txt";
     //Die Datei offenen
     std::ifstream dateiStream(dateiname);
 
@@ -66,6 +66,7 @@ int main() {
 
                     if (LEER == zustand) {
                         summeWoerter++;
+                        zustand = BUCHSTABE;
                     } else if (ZIFFER == zustand) {
                         cerr << "\nFEHLER: Buchstaben und Zahlen sind an Stelle " << i + 1 << " verschmischt\n";
                         exit(1);
