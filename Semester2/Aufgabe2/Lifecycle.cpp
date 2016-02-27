@@ -25,6 +25,8 @@ int Lifecycle::numberOfAliveNeighbours(CellSphere sphere, int row, int col) {
 
     int alivedCells = 0;
 
+    int counter = 0;
+
     for (int posY = row -1; posY <= row +1; posY ++){
 
         for (int posX = col -1; posX <= col + 1; posX ++){
@@ -34,9 +36,7 @@ int Lifecycle::numberOfAliveNeighbours(CellSphere sphere, int row, int col) {
                continue;
             }
 
-            if (sphere[posY][posX].state == Alive) {
-                alivedCells++;
-            }
+            alivedCells +=(int)sphere[posY][posX].state;
         }
     }
 
@@ -49,14 +49,7 @@ void Lifecycle::naturalSelection(Cell& cell, int aliveNeighbours) {
 
         cell.state = Alive;
     }
-    else if (aliveNeighbours < 2){
-
-        cell.state = Dead;
-    }
-    else if (aliveNeighbours == 3 || aliveNeighbours == 2 && cell.state == Alive){
-        cell.state = Alive;
-    }
-    else if (aliveNeighbours > 3){
+    else if (aliveNeighbours > 3 || aliveNeighbours < 2){
 
         cell.state = Dead;
     }
