@@ -9,7 +9,6 @@
 
 struct PGMBild {
 
-    char magic[2];
     int nx;
     int ny;
     int graumax;
