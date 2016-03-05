@@ -10,7 +10,7 @@ enum CellState: int {
     Dead = 0,
     Alive = 1
 };
-
+//The cell
 struct Cell {
 
     CellState state = Dead;

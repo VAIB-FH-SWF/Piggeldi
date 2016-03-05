@@ -185,44 +185,6 @@ void PGMBildRepo::kopiere_bildkopf(PGMBild *bild1, PGMBild *bild2) {
     bild2->filetype = bild2->filetype;
 }
 
-void PGMBildRepo::schwellwert(PGMBild *bild1, PGMBild *bild2, Pixel schwellwert) {
-
-    int sum, anz;
-    this->kopiere_bildkopf(bild1,bild2);
-    for (int row = 0; row < bild1->ny; row++)
-    {
-        for (int col = 0; col < bild1->nx; col++)
-        {
-            sum = anz = 0;
-            // Von Zeile - 1 bis Zeile + 1
-            // falls diese im Bereich des Bildes sind
-            for (int tRow = max(0, row - 1); tRow < min(bild1->ny, row + 1); tRow++)
-            {
-                // Von Spalte - 1 bis Spalte + 1
-                // falls diese im Bereich des Bildes sind
-                for (int tCol = max(0, col - 1); tCol < min(bild1->nx, col + 1);
-                     tCol++)
-                {
-                    // Wenn die aktuelle Zeile/Spalte <> der eigentlichen Zeile/Spalte ist,
-                    // wird der Wert mit -1 Multipliziert und dann addiert
-                    if(row != tRow || col != tCol)
-                    {
-                        sum -= bild1->bild[tRow][tCol];
-                        anz++;
-                    }
-                }
-            }
-            // der Wert wird mit Anzahlumliegende Felder +1 multipliziert
-            sum += bild1->bild[row][col] * (anz + 1);
-            // Wenn der Wert kleiner als 0 ist wird dieser zu 0
-            // Wenn der Wert groesser als der Max. Grauwird wird dieser zu diesem
-            // Ansonsten wird der Wert uebernommen
-            sum = (sum < 0 ? 0 : sum > bild1->graumax ? bild1->graumax : sum);
-            bild2->bild[row][col] = sum;
-        }
-    }
-}
-
 void PGMBildRepo::parse_bild_informationen(ifstream& fileStream, PGMBild *bild) {
 
     string fileType;

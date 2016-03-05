@@ -13,5 +13,10 @@ int main() {
     repo->bild_schreiben(bild,"/Users/private/Studium/C++/Piggeldi/Semester2/Aufgabe1/dreifach2.pgm");
 
     repo->delete_pixel_matrix(bild->bild);
+
+
+    delete(bild);
     delete(repo);
+
+    return 0;
 }

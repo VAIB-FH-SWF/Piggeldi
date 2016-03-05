@@ -13,7 +13,6 @@ typedef unsigned int uint;
 class Board {
 
 public:
-
     void draw(CellSphere cellCulture, uint height, uint width);
 private:
 
