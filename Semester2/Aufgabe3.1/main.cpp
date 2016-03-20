@@ -64,6 +64,7 @@ int main() {
 
         Element *cache = cursor;
         cursor = cursor->next;
+
         delete(cache);
     }
 
