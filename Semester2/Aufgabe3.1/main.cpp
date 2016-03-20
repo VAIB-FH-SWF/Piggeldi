@@ -12,38 +12,43 @@ struct Element {
 
 int main() {
 
-    Element* L = nullptr;
-    Element* cursor = nullptr;
+    Element *L = nullptr;
+    Element *cursor = nullptr;
 
-    //create the elements
-    Element* x4 = new Element();
-    x4->key = 4;
-    x4->info = 44;
-    x4->next = nullptr;
+    //Create the list
+    for (int i = 1; i <= 4; i ++){
 
-    Element* x3 = new Element();
-    x3->info = 33;
-    x3->key = 3;
-    x3->next = x4;
+        Element *element = new Element();
+        element->info = i*10+i;
+        element->key = i;
+        element->next = nullptr;
 
-    Element* x2 = new Element();
-    x2->key = 2;
-    x2->info = 22;
-    x2->next = x3;
+        if (i == 1){
 
-    Element* x1 = new Element();
-    x1->key = 1;
-    x1->info = 11;
-    x1->next = x2;
+            cursor = element;
+            L = element;
+        }
+        else {
 
-    L = x1;
+            cursor->next = element;
+            cursor = element;
+        }
+    }
+
+    //Set the startpoint of the list
     cursor = L;
-
+    //Loop throw the list
     while (cursor->key != 3){
 
         cursor = cursor->next;
+
+        //Break the loop i case we found a nullptr
+        if (cursor->next == nullptr) {
+            break;
+        }
     }
 
+    //Print the element
     if (cursor->key == 3){
 
         cout << "Listenelement gefunden :" << cursor << endl;
@@ -52,12 +57,17 @@ int main() {
         cout << "next = \t\t\t\t\t" << cursor->next << endl;
     }
 
-    //CLEANUP!
+    //Cleanup
+    cursor = L;
 
-    delete(x1);
-    delete(x2);
-    delete(x3);
-    delete(x4);
+    while (cursor->next != nullptr) {
+
+        Element *cache = cursor;
+        cursor = cursor->next;
+        delete(cache);
+    }
+
+    delete(cursor);
 
     return 0;
 }
