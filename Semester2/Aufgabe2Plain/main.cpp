@@ -38,6 +38,7 @@ void delete_int_matrix(int **m);
 uint holeAnzahlLebendeNachbarn(int ** feld, uint zeile, uint spalte);
 void tauscheFelder(ZellSphere * feld1, ZellSphere * feld2);
 
+//Haupteinstiegspunkt
 int main()
 {
 	ZellSphere ausgabeFeld;
@@ -127,6 +128,7 @@ uint next_generation(ZellSphere feld1, ZellSphere feld2, uint hoehe, uint breite
 			if (anzahlLebenderNachbarn == 3 && feld1[row][col] == Dead) {
 
                 feld2[row][col] = Alive;
+				anzahlLebendeZellen ++;
             }
             //Es gibt mehr als 3 oder weniger als 2 lebende Nachbarn. Die Zelle stirbt
 			else if (anzahlLebenderNachbarn > 3 || anzahlLebenderNachbarn < 2){
@@ -136,10 +138,7 @@ uint next_generation(ZellSphere feld1, ZellSphere feld2, uint hoehe, uint breite
 			else
 			{
 				feld2[row][col] = feld1[row][col];
-				if (feld1[row][col])
-				{
-					anzahlLebendeZellen++;
-				}
+				anzahlLebendeZellen ++;
 			}
 		}
 	}
@@ -218,17 +217,17 @@ ZellSphere new_int_matrix(int rows, int columns)
 	int i;
 	int **m;
 	m = new int*[rows];
-	*m = new int[rows * columns]();
-	for (i = 1; i < rows; i += 1)
+
+	for (i = 0; i < rows; ++i)
 	{
-		m[i] = m[i - 1] + columns;
+		m[i] = new int[columns];
 	}
 	return m;
 }
 
 /**
- * Gibt den Speicher der Matrix frei
- * @param m Matrix dessen Speicher freigegeben werden soll
+ * Gibt den Speicher der ZellSphere frei
+ * @param m ZellSpehre dessen Speicher freigegeben werden soll
  */
 void delete_int_matrix(ZellSphere m)
 {
@@ -239,14 +238,13 @@ void delete_int_matrix(ZellSphere m)
 }
 
 /**
- * Tauscht die Pointer auf die zwei Felder
+ * Tauscht den Inhalt auf die zwei Felder
  * @param feld1 Erste Matrix
  * @param feld2 Zweite Matrix
  */
-void tauscheFelder(ZellSphere * feld1, ZellSphere * feld2)
+void tauscheFelder(ZellSphere *feld1, ZellSphere  *feld2)
 {
 	ZellSphere zwischenspeicher = *feld1;
 	*feld1 = *feld2;
 	*feld2 = zwischenspeicher;
-
 }
