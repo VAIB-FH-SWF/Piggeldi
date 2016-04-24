@@ -4,6 +4,7 @@
 
 #include "Class.h"
 #include <iostream>
+#include <sstream>
 
 Class::Class(int _value, string _name) {
 
@@ -61,26 +62,24 @@ Class::Class(const Class &other) {
 
 Class Class::operator+(const Class &other) {
 
-    this->value = this->value + other.value;
-
+    int newValue = this->value + other.value;
+    stringstream classNameConcat;
+    classNameConcat << "x" << newValue;
+    string className = classNameConcat.str();
     cout << " ==== operator + called ( this = " << this->name << " other = " << other.name << " )\n";
 
-    return *this;
+    return Class(newValue,className);
 }
 
+Class f(Class arg) {
 
+    return arg;
+}
 
+Class g(Class *arg) {
 
-
-
-
-
-
-
-
-
-
-
+    return *arg;
+}
 
 
 
