@@ -49,29 +49,26 @@ int main() {
         }
         else {
 
-            //put an employee at the end of the list
+            //update the cursor
             cursor->next = listEmployee;
             cursor = cursor->next;
         }
 
         i++;
     }
+    inputStream.close();
 
     cursor = anker;
 
     //Loop throw the list and find the telno 4731
-    while (cursor->durchwahl != 4731){
+    while (cursor->next != nullptr){
+
+        if (cursor->durchwahl == 4731) {
+
+            cout << cursor->vorname << " " << cursor->nachname << endl;
+        }
 
         cursor = cursor->next;
-
-        if (cursor->next == nullptr){
-            break;
-        }
-    }
-
-    if (cursor->durchwahl == 4731) {
-
-        cout << cursor->vorname << " " << cursor->nachname << endl;
     }
 
     //CLEANUP
@@ -85,6 +82,7 @@ int main() {
 
         delete(cache);
     }
+    //Delete the last element of the
     delete(cursor);
 
     return 0;

@@ -29,8 +29,9 @@ int main() {
             L = element;
         }
         else {
-
+            //put the element to the current cursor
             cursor->next = element;
+            // override the cursor with new element
             cursor = element;
         }
     }
